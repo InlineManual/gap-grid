@@ -1,0 +1,30 @@
+{
+  "title": "Gap Grid",
+  "name": "gap-grid",
+  "version": "0.1.0",
+  "description": "Generates list of boxes that will cover whole canvas, excepts defined gaps.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fczbkk/gap-grid.git"
+  },
+  "author": "Riki Fridrich <riki@fczbkk.com> (https://github.com/fczbkk)",
+
+  "license": "MIT",
+
+  "bugs": {
+    "url": "https://github.com/fczbkk/gap-grid/issues"
+  },
+  "homepage": "https://github.com/fczbkk/gap-grid",
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-coffeelint": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-jasmine": "*",
+    "grunt-contrib-coffee": "*",
+    "grunt-bump": "*",
+    "grunt-conventional-changelog": "*",
+    
+    "load-grunt-tasks": "*"
+  }
+}
