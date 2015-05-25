@@ -56,7 +56,7 @@ module.exports = (grunt) ->
       test:
         files: ['test/src/*.coffee']
         tasks: ['coffeelint:test', 'coffee:test', 'jasmine']
-      
+
 
 
 
@@ -64,9 +64,7 @@ module.exports = (grunt) ->
       options:
         files: [
           'package.json'
-          
           'bower.json'
-          
         ]
         updateConfigs: ['pkg']
         commitFiles: ['-a']
@@ -81,8 +79,8 @@ module.exports = (grunt) ->
     'coffeelint'
     'coffee'
     'jasmine'
-
   ]
+
 
   # Constructs the code, runs tests and if everyting is OK, creates a minified
   # version ready for production. This task is intended to be run manually.
@@ -95,6 +93,7 @@ module.exports = (grunt) ->
       'changelog'
       'bump-commit'
     ]
+
 
   grunt.registerTask 'default', [
     'watch'
