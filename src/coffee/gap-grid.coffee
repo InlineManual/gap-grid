@@ -64,6 +64,10 @@ class GapGrid
       result.horizontal.push gap.left, gap.left + gap.width
       result.vertical.push gap.top, gap.top + gap.height
 
+    # all values need to be rounded, to prevent strange artifacts when zoomed
+    result.horizontal = (Math.round n for n in result.horizontal)
+    result.vertical = (Math.round n for n in result.vertical)
+
     # helper function to get only list items within given range
     filterByRange = (list, min, max) ->
       list.filter (item) ->
