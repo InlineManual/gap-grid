@@ -82,20 +82,6 @@ describe 'GapGrid', ->
         vertical: [0, 100, 300, 500]
       expect(x.getGridPoints()).toEqual expectation
 
-    it 'should round grid points for box positioned at subpixels', ->
-      x.addGap {left: 99.666, top: 100.333, width: 100, height: 200}
-      expectation =
-        horizontal: [0, 100, 200, 500]
-        vertical: [0, 100, 300, 500]
-      expect(x.getGridPoints()).toEqual expectation
-
-    it 'should round grid points for box with subpixel size', ->
-      x.addGap {left: 100, top: 100, width: 99.666, height: 200.333}
-      expectation =
-        horizontal: [0, 100, 200, 500]
-        vertical: [0, 100, 300, 500]
-      expect(x.getGridPoints()).toEqual expectation
-
     it 'should get vertical and horizontal grid points for multiple boxes', ->
       x.addGaps [gap_box1, gap_box2]
       expectation =
