@@ -1,3 +1,12 @@
+<a name="1.1.0"></a>
+## 1.1.0 (2015-07-29)
+
+
+#### Features
+
+* add support for Expose ([c4bc9fe2](https://github.com/fczbkk/gap-grid/commit/c4bc9fe2b530206dc3cc8310690937b616df9a04))
+
+
 <a name="1.0.2"></a>
 ### 1.0.2 (2015-06-03)
 
