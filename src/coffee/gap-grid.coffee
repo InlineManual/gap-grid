@@ -179,5 +179,8 @@ class GapGrid
 
 
 # Expose object to the global namespace.
-root = if typeof exports is 'object' then exports else this
-root.GapGrid = GapGrid
+if expose?
+  expose GapGrid, 'GapGrid'
+else
+  root = if typeof exports is 'object' then exports else this
+  root.GapGrid = GapGrid
