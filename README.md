@@ -1,14 +1,23 @@
 # Gap Grid
 
+Generates list of boxes that will cover whole canvas, excepts defined gaps.
+
+[![npm](https://img.shields.io/npm/v/@fczbkk/gap-grid.svg?maxAge=2592000)](https://www.npmjs.com/package/@fczbkk/gap-grid)
+[![npm](https://img.shields.io/github/license/fczbkk/gap-grid.svg?maxAge=2592000)](https://github.com/fczbkk/gap-grid/blob/master/LICENSE)
+[![David](https://img.shields.io/david/fczbkk/gap-grid.svg?maxAge=2592000)](https://david-dm.org/fczbkk/gap-grid)
+[![Travis](https://img.shields.io/travis/fczbkk/gap-grid.svg?maxAge=2592000)](https://travis-ci.org/fczbkk/gap-grid)
+
 This library was originaly created for [Backdrop](https://github.com/fczbkk/Backdrop). But it is abstract and has no requirements, so it can be used anywhere else. Let's see what it does:
 
 ![](assets/explanation.png)
 
-It starts with a block (canvas) containing other blocks (gaps). Then it finds minimum number of blocks to fill out whole canvas around the gaps without overlaps.
+It starts with a box (canvas) containing other boxes (gaps). Then it finds minimum number of boxes to fill out whole canvas around the gaps without overlaps.
 
 ## How to use it
 
 ```javascript
+import GapGrid from '@fczbkk/gap-grid';
+
 // create instance
 var my_gap_grid = new GapGrid();
 
@@ -23,108 +32,85 @@ my_gap_grid.addGap({left: 300, top: 200, width: 100, height: 200});
 var cover_boxes = my_gap_grid.generate();
 ```
 
-Or you can use equivalent shorthand version:
+## Documentation
 
-```javascript
-var my_gap_grid = new GapGrid({left: 0, top: 0, width: 500, height: 500}, [
-  {left: 100, top: 100, width: 100, height: 200},
-  {left: 300, top: 200, width: 100, height: 200}
-]);
-var cover_boxes = my_gap_grid.generate();
-```
+### Box
 
-### Constructor
+Object representing a Box.
 
-```javascript
-new GapGrid(canvas_box, gap_boxes)
-```
+**Properties**
 
-- **canvas_box** - Box object representing the area which you want to cover.
-- **gap_boxes** - Array of box objects representing areas which should not be covered.
+-   `left` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `top` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `width` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `height` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
-### Methods
+### GapGrid
 
-#### setCanvas(box)
+Class representing a GapGrid.
 
-Sets canvas box.
+#### constructor
 
-```javascript
-my_gap_grid.setCanvas({left: 0, top: 0, width: 500, height: 500});
-```
+Create a GapGrid object.
 
-#### generate()
+**Parameters**
 
-Returns an array containing box objects. It should represent the minimum number of boxes that, if combined, will cover the whole area of canvas box, without overlaping and without covering areas of gap boxes.
+-   `canvas` **\[[Box](#box)]** Box representing the area which you want to cover.
+-   `gaps` **\[[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Box](#box)>]** List of Box objects representing areas which should not be covered.
 
-#### addGap(box)
+#### setCanvas
 
-Adds a single gap box to the list of gap boxes.
+Update the canvas.
 
-```javascript
-my_gap_grid.addGap({left: 100, top: 100, width: 100, height: 200});
-```
+**Parameters**
 
-#### addGaps([box1, box2, ...])
+-   `canvas` **[Box](#box)** 
 
-Adds multiple gap boxes at once.
-
-```javascript
-my_gap_grid.addGaps([
-  {left: 100, top: 100, width: 100, height: 200},
-  {left: 300, top: 200, width: 100, height: 200}
-]);
-
-// it is equivalent to this
-my_gap_grid.addGap({left: 100, top: 100, width: 100, height: 200});
-my_gap_grid.addGap({left: 300, top: 200, width: 100, height: 200});
-```
-
-#### removeGap(box)
-
-Removes a single gap box from the list of gap boxes.
-
-```javascript
-my_gap_grid.removeGap({left: 100, top: 100, width: 100, height: 200});
-```
-
-#### removeGaps([box1, box2, ...])
-
-Removes multiple gap boxes at once.
-
-```javascript
-my_gap_grid.removeGaps([
-  {left: 100, top: 100, width: 100, height: 200},
-  {left: 300, top: 200, width: 100, height: 200}
-]);
-
-// it is equivalent to this
-my_gap_grid.removeGap({left: 100, top: 100, width: 100, height: 200});
-my_gap_grid.removeGap({left: 300, top: 200, width: 100, height: 200});
-```
-
-#### clearGaps()
+#### clearGaps
 
 Removes all the gap boxes.
 
-### Box object
+#### addGaps
 
-The library uses a simple data object to describe boxes (canvas, gaps, covers):
+Adds multiple gaps at once.
 
-```javascript
-{
-  left:   100,
-  top:    100,
-  width:  100,
-  height: 100
-}
-```
+**Parameters**
 
-It is abstract, it does not use any units. All positions are absolute.
+-   `gaps` **\[[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Box](#box)>](default \[])** 
+
+#### addGap
+
+Add single gap.
+
+**Parameters**
+
+-   `gap` **[Box](#box)** 
+
+#### removeGaps
+
+Remove multiple gaps at once.
+
+**Parameters**
+
+-   `gaps` **\[[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Box](#box)>](default \[])** 
+
+#### removeGap
+
+Remove single gap.
+
+**Parameters**
+
+-   `gap` **[Box](#box)** 
+
+#### generate
+
+Creates list of Box objects. They represent the minimum number of boxes that, if combined, will cover the whole area of canvas, without overlapping and without covering areas of gaps.
+
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Box](#box)>** 
 
 ## Bug reports, feature requests and contact
 
-If you found any bugs, if you have feature requests or any questions, please, either [file an issue at GitHub](https://github.com/fczbkk/gap-grid/issues) or send me an e-mail at [riki@fczbkk.com](mailto:riki@fczbkk.com).
-
+If you found any bugs, if you have feature requests or any questions, please, either [file an issue at GitHub](https://github.com/fczbkk/gap-grid/issues) or send me an e-mail at <a href="mailto:riki@fczbkk.com">riki@fczbkk.com</a>.
 
 ## License
 
