@@ -1,3 +1,13 @@
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/fczbkk/gap-grid/compare/v2.0.0...v2.1.0) (2017-08-16)
+
+
+### Features
+
+* add option to round results ([98b31ce](https://github.com/fczbkk/gap-grid/commit/98b31ce))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/fczbkk/gap-grid/compare/v2.0.0-rc.1...v2.0.0) (2016-08-21)
 
