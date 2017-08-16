@@ -15,6 +15,14 @@ import {
  * @property {number} height
  */
 
+/**
+ * @typedef {Object} gap_grid_config
+ * @property {boolean} [round_points=false] - If set to `true`, point coordinates will be rounded. This prevents glitches in some use cases.
+ */
+const default_config = {
+  round_points: false
+};
+
 
 /**
  * Class representing a GapGrid.
@@ -26,9 +34,11 @@ export default class GapGrid {
    * Create a GapGrid object.
    * @param {Box} [canvas] - Box representing the area which you want to cover.
    * @param {Box[]} [gaps] - List of Box objects representing areas which should not be covered.
+   * @param {gap_grid_config} [custom_config]
    */
-  constructor (canvas, gaps = []) {
+  constructor (canvas, gaps = [], custom_config = {}) {
     this.gaps = [];
+    this.config = Object.assign({}, default_config, custom_config);
 
     this.setCanvas(canvas);
     this.addGaps(gaps);
@@ -95,7 +105,7 @@ export default class GapGrid {
   generate () {
     const result = [];
 
-    const points = getGridPoints(this.canvas, this.gaps);
+    const points = getGridPoints(this.canvas, this.gaps, this.config.round_points);
     const matrix = getGridMatrix(points, this.gaps);
     const blocks = getAllMatrixBlocks(matrix);
 

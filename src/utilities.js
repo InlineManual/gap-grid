@@ -133,11 +133,22 @@ export function getAllMatrixBlocks (matrix) {
 }
 
 
-export function getGridPoints (canvas, gaps) {
+export function getGridPoints (canvas, gaps, apply_rounding = false) {
   const result = {
     horizontal: [canvas.left, canvas.left + canvas.width],
     vertical: [canvas.top, canvas.top + canvas.height]
   };
+
+  if (apply_rounding) {
+    gaps = gaps.map(gap => {
+      return {
+        left: Math.round(gap.left),
+        top: Math.round(gap.top),
+        width: Math.round(gap.width),
+        height: Math.round(gap.height)
+      }
+    });
+  }
 
   gaps.forEach(function (gap) {
     result.horizontal.push(gap.left, gap.left + gap.width);
