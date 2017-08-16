@@ -46,6 +46,13 @@ describe('GapGrid', function() {
       expect(x.gaps).toEqual([gap_box1]);
     });
 
+    it('should apply rounding', function () {
+      const test_box = {left: 99.5, top: 100.4, width: 99.5, height: 100.4};
+      x = new GapGrid(canvas_box, [], {apply_rounding: true});
+      x.addGap(test_box);
+      expect(x.gaps).toEqual([{left: 100, top: 100, width: 100, height: 100}]);
+    });
+
   });
 
   describe('removeGap', function() {

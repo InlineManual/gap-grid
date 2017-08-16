@@ -75,6 +75,11 @@ export default class GapGrid {
    */
   addGap (gap) {
     if (isValidBox(gap) &&  (this.gaps.indexOf(gap) === -1)) {
+      if (this.config.apply_rounding) {
+        ['left', 'top', 'width', 'height'].forEach(
+          property => gap[property] = Math.round(gap[property])
+        );
+      }
       this.gaps.push(gap);
     }
   }
@@ -105,7 +110,7 @@ export default class GapGrid {
   generate () {
     const result = [];
 
-    const points = getGridPoints(this.canvas, this.gaps, this.config.round_points);
+    const points = getGridPoints(this.canvas, this.gaps);
     const matrix = getGridMatrix(points, this.gaps);
     const blocks = getAllMatrixBlocks(matrix);
 

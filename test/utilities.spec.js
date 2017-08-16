@@ -208,16 +208,6 @@ describe('utilities', function () {
       expect(result).toEqual(expectation);
     });
 
-    it('should apply rounding', function() {
-      const test_box = {left: 99.6, top: 100.4, width: 100, height: 200};
-      const expectation = {
-        horizontal: [0, 100, 200, 500],
-        vertical: [0, 100, 300, 500]
-      };
-      const result = getGridPoints(canvas_box, [test_box], true);
-      expect(result).toEqual(expectation);
-    });
-
     it('should get vertical and horizontal grid points for multiple boxes', function() {
       const expectation = {
         horizontal: [0, 100, 200, 300, 400, 500],
