@@ -17,10 +17,10 @@ import {
 
 /**
  * @typedef {Object} gap_grid_config
- * @property {boolean} [round_points=false] - If set to `true`, point coordinates will be rounded. This prevents glitches in some use cases.
+ * @property {boolean} [apply_rounding=false] - If set to `true`, point coordinates will be rounded. This prevents glitches in some use cases.
  */
 const default_config = {
-  round_points: false
+  apply_rounding: false
 };
 
 
