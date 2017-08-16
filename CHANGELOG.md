@@ -1,3 +1,13 @@
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/fczbkk/gap-grid/compare/v2.1.1...v2.1.2) (2017-08-16)
+
+
+### Bug Fixes
+
+* use correct name for rounding config property ([5d6f30f](https://github.com/fczbkk/gap-grid/commit/5d6f30f))
+
+
+
 <a name="2.1.1"></a>
 ## [2.1.1](https://github.com/fczbkk/gap-grid/compare/v2.1.0...v2.1.1) (2017-08-16)
 
